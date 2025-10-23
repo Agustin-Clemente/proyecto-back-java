@@ -19,8 +19,8 @@ public class CrudProductos extends CrudConsola<Producto> {
 
         switch (opcion) {
             case 1:
-                String nombreProd = leerString("Ingrese el nombre del producto: ");
-                double precioProd = leerDouble("Ingrese el precio del producto: ");
+                String nombreProd = leerString("Ingrese el nombre del artículo: ");
+                double precioProd = leerDouble("Ingrese el precio del artículo: ");
 
                 if (categorias.isEmpty()) {
                     System.out.println("No hay categorías disponibles. Por favor, cree una categoría primero.");
@@ -41,19 +41,19 @@ public class CrudProductos extends CrudConsola<Producto> {
                 if (categoriaSeleccionada != null) {
                     productos.add(new Articulo(nombreProd, precioProd, categoriaSeleccionada));
                     System.out.println("Artículo creado exitosamente.");
-                }else{
+                } else {
                     System.out.println("Categoría inválida.");
                 }
                 break;
 
-                case 2:
+            case 2:
                 String nombreServ = leerString("Ingrese el nombre del servicio: ");
                 double precioServ = leerDouble("Ingrese el precio del servicio: ");
                 int duracionServ = leerEntero("Ingrese la duración del servicio en horas: ");
                 productos.add(new Servicio(nombreServ, precioServ, duracionServ));
                 System.out.println("Servicio creado exitosamente.");
                 break;
-        
+
             default:
                 System.out.println("Opción inválida.");
         }
@@ -88,10 +88,19 @@ public class CrudProductos extends CrudConsola<Producto> {
         int id = leerEntero("Ingrese el ID del producto a modificar y presione enter: ");
         for (Producto producto : productos) {
             if (producto.getId() == id) {
-                String nuevoNombre = leerString("Ingrese el nuevo nombre del producto: ");
-                double nuevoPrecio = leerDouble("Ingrese el nuevo precio del producto: ");
-                producto.setNombre(nuevoNombre);
-                producto.setPrecio(nuevoPrecio);
+                System.out.println("Producto seleccionado: " + producto);
+                System.out.println("¿Cambiar nombre? (1-Si/2-No)");
+                int cambiarNombre = leerEntero("Opción:");
+                if (cambiarNombre == 1) {
+                    String nuevoNombre = leerString("Ingrese el nuevo nombre del producto: ");
+                    producto.setNombre(nuevoNombre);
+                }
+                System.out.println("¿Cambiar precio? (1-Si/2-No)");
+                int cambiarPrecio = leerEntero("Opción:");
+                if (cambiarPrecio == 1) {
+                    double nuevoPrecio = leerDouble("Ingrese el nuevo precio del producto: ");
+                    producto.setPrecio(nuevoPrecio);
+                }
                 if (producto instanceof Articulo) {
                     System.out.println("¿Cambiar categoría? (1-Si/2-No)");
                     int cambiarCat = leerEntero("Opción:");
@@ -107,19 +116,19 @@ public class CrudProductos extends CrudConsola<Producto> {
                         int idCat = leerEntero("Ingrese el ID de la categoría y presione enter: ");
                         for (Categoria categoria : categorias) {
                             if (categoria.getId() == idCat) {
-                                ((Articulo)producto).setCategoria(categoria);
+                                ((Articulo) producto).setCategoria(categoria);
                                 break;
                             }
                         }
-                    } 
                     }
+                }
 
                 else if (producto instanceof Servicio) {
                     System.out.println("Cambiar duración del servicio? (1-Si/2-No)");
                     int cambiarDuracion = leerEntero("Opción:");
                     if (cambiarDuracion == 1) {
                         int nuevaDuracion = leerEntero("Ingrese la nueva duración del servicio en horas: ");
-                        ((Servicio)producto).setDuracionHoras(nuevaDuracion);
+                        ((Servicio) producto).setDuracionHoras(nuevaDuracion);
                     }
                 }
                 System.out.println("Producto modificado exitosamente.");
@@ -137,7 +146,7 @@ public class CrudProductos extends CrudConsola<Producto> {
         if (eliminado) {
             System.out.println("Producto eliminado exitosamente.");
         } else {
-        System.out.println("Producto no encontrado.");
+            System.out.println("Producto no encontrado.");
         }
     }
 }

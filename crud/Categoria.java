@@ -6,7 +6,8 @@ public class Categoria {
 
     private static int contador = 1;
 
-    public Categoria() {    }
+    public Categoria() {
+    }
 
     public Categoria(String nombre) {
         this.id = contador++;
@@ -15,11 +16,11 @@ public class Categoria {
 
     public int getId() {
         return id;
-    }   
+    }
 
     public String getNombre() {
         return nombre;
-    }   
+    }
 
     public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {

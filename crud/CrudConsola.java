@@ -6,12 +6,16 @@ public abstract class CrudConsola<T> {
     protected final Scanner scanner = new Scanner(System.in);
 
     public abstract void crear();
+
     public abstract void modificar();
+
     public abstract void buscar();
+
     public abstract void verTodos();
+
     public abstract void eliminar();
 
-    public void menu(){
+    public void menu() {
         System.out.println("Menú de opciones:");
         System.out.println("1. Crear");
         System.out.println("2. Ver Todos");
@@ -47,8 +51,17 @@ public abstract class CrudConsola<T> {
     }
 
     protected String leerString(String mensaje) {
-        System.out.print(mensaje);
-        return scanner.nextLine();
+        String entrada;
+        do {
+            System.out.print(mensaje);
+            entrada = scanner.nextLine().trim();
+            if (entrada.isEmpty()) {
+                System.out.println("Entrada inválida. Por favor, ingrese un texto.");
+
+            }
+
+        } while (entrada.isEmpty());
+        return entrada;
     }
-    
+
 }

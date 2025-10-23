@@ -1,4 +1,5 @@
 package crud;
+
 public class Servicio extends Producto {
     private int duracionHoras;
 
@@ -7,10 +8,9 @@ public class Servicio extends Producto {
 
     public Servicio(String nombre, double precio, int duracionHoras) {
         super(nombre, precio);
-    
+
         this.duracionHoras = duracionHoras;
     }
-
 
     public int getDuracionHoras() {
         return duracionHoras;
@@ -31,7 +31,8 @@ public class Servicio extends Producto {
 
     @Override
     public String toString() {
-        return "ID: " + getId() + ", Nombre: " + getNombre() + ", Precio: " + getPrecio() + ", Duración (horas): " + getDuracionHoras();
+        return "ID: " + getId() + ", Nombre: " + getNombre() + ", Precio: " + getPrecio() + ", Duración (horas): "
+                + getDuracionHoras();
     }
-    
+
 }

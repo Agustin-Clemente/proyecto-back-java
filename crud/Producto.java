@@ -50,5 +50,5 @@ public abstract class Producto implements Vendible {
     public String toString() {
         return "ID: " + id + ", Nombre: " + nombre + ", Precio: " + precio;
     }
-    
+
 }
